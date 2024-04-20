@@ -1,0 +1,80 @@
+body{
+    font-family: 'DynaPuff', cursive;
+    text-transform: capitalize;
+    
+}
+.btn1 {
+    box-shadow: 0px 0px 15px 1px rgb(191, 237, 250);
+    ;
+    color: white;
+    background-color: #5fa9c4;
+    border: none;
+    transition: all ease-in-out 0.5s;
+
+}
+
+ .btn1:hover {
+    box-shadow: 0px 0px 15px 1px rgb(191, 237, 250);
+    color: black;
+    background-color: white;
+    border: none;
+    transition: all ease-in-out .1s;
+}
+#scrollUpBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: rgb(73, 175, 215);
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+}
+@media(max-width: 768px) {
+.about_section .container .d-flex {
+display: flex !important;
+/* align-content: flex-start; */
+flex-direction: column;
+}
+
+.choose_section .container .d-flex {
+display: flex !important;
+flex-direction: column;
+}
+
+.developer_section .container .d-flex1 {
+display: flex !important;
+/* align-content: flex-start; */
+flex-direction: column;
+}
+
+.footer_section .container .row {
+--bs-gutter-x: 1.5rem;
+--bs-gutter-y: 0;
+display: flex;
+flex-wrap: wrap;
+margin-top: calc(-1 * var(--bs-gutter-y));
+margin-right: calc(-.5 * var(--bs-gutter-x));
+margin-left: calc(-.5 * var(--bs-gutter-x));
+flex-direction: column;
+}
+
+.model .modal-content {
+font-weight: bolder;
+position: relative;
+font-family: 'Poppins', sans-serif;
+bottom: 150px;
+}
+}
+
+@media (max-width:575px) {
+.carousel-indicators1 {
+top: 640px;
+
+}
+}

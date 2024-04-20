@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="x-icon" href="pics/sharklogo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pitcher Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="jquery/picher.js"></script>
+    <link rel="stylesheet" href="css/social_icon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script>
+        $(document).ready(function () {
+            $("#pEmail").blur(function () {
+                var exp = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                var email = $("#pEmail").val();
+
+                if (exp.test(email) == true) {
+                    $(this).css("border", "2px solid green");
+                    $("#oldPassword").prop("disabled", false);
+
+                } else {
+                    $(this).css("border", "2px solid red");
+                }
+            });
+
+            $("#oldPassword").blur(function () {
+                var pass = $("#oldPassword").val();
+                var r = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+                if (r.test(pass) == true) {
+                    $(this).css("border", "2px solid green");
+                    $("#newPassword").prop("disabled", false);
+
+                } else {
+                    $(this).css("border", "2px solid red");
+                }
+            });
+            $("#newPassword").blur(function () {
+                var pass = $("#newPassword").val();
+                var r = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+                if (r.test(pass) == true) {
+                    $(this).css("border", "2px solid green");
+                    $("#pSaveChanges").prop("disabled", false);
+
+                } else {
+                    $(this).css("border", "2px solid red");
+                }
+            });
+
+            $("#btnProfile").click(function () {
+                location.href = "profile-pitcher.html";
+            })
+            $("#btnSharkFinder").click(function () {
+                location.href = "shark_finder.html";
+            })
+            $("#oldPassword").blur(function () {
+                // alert()
+                var email = $(".txtEmai122l").val();
+                var oldpassword = $(".oldPassword").val();
+                var obj = {
+                    type: "get",
+                    url: "/ajax-chk-pPass",
+                    data: {
+                        email1: email,
+                        oldpasss: oldpassword,
+                    },
+                };
+                $.ajax(obj)
+                    .done(function (myResponse) {
+                        $("#result12").html(myResponse);
+                        // $("#newPassword").prop("disabled", false);
+
+                    })
+                    .fail(function (err) {
+                        alert(err.toString());
+                    });
+            })
+
+
+            //----------------------------------------
+
+
+            //=============================
+            $("#pSaveChanges").click(function () {
+                // alert("hello");
+                var email = $("#pEmail").val();
+                var oldpass = $("#oldPassword").val();
+                var newpass = $("#newPassword").val();
+
+                var obj = {
+                    type: "post",
+                    url: "/db-change-pitcher",
+                    data: {
+                        emaill: email,
+                        oldpasss: oldpass,
+                        newpasss: newpass,
+                    }
+                }
+                $.ajax(obj).done(function (msg) {
+                    $("#result1").html(msg);
+                }).fail(function (msgerr) {
+                    $("#result1").html(msgerr);
+                })
+            })
+            //===================================
+            //------------------------------------------
+            //  old password eye
+            $(".fa").mouseenter(function () {
+                $("#oldPassword").prop("type", "text");
+                $(".fa").removeClass("fa-eye").addClass("fa-eye-slash");
+            });
+
+            $(".fa").mouseleave(function () {
+                $("#oldPassword").attr("type", "password");
+                $(".fa").removeClass("fa-eye-slash").addClass("fa-eye");
+            });
+
+            //  new password eye
+            $(".fa").mouseenter(function () {
+                $("#newPassword").prop("type", "text");
+                $(".fa").removeClass("fa-eye").addClass("fa-eye-slash");
+            });
+
+            $(".fa").mouseleave(function () {
+                $("#newPassword").attr("type", "password");
+                $(".fa").removeClass("fa-eye-slash").addClass("fa-eye");
+            });
+
+            $("#pitcherbtnSearch").click(function () {
+
+                var myKuchEmail = $("#picTxtEamil").val();
+                // alert(myKuchEmail)
+
+                var obj = {
+                    type: "get",
+                    url: "/json-get-record-pitcher-profile",
+                    data: {
+                        kuchEmail: myKuchEmail
+
+                    }
+                }
+
+                $.ajax(obj).done(function (jsonAryResult) {
+                    // alert(JSON.stringify(jsonAryResult))
+
+                    if (jsonAryResult.length == 0)
+                        alert("Firstly, Please fill details");
+                    else {
+                        $("#txtFullname").val(jsonAryResult[0].name);//use table wale col ka name
+                        // alert(jsonAryResult[0].dos);
+                        $("#txtContact").val(jsonAryResult[0].contact);//use table wale col ka name
+                        $("#txtAddress").val(jsonAryResult[0].address);//use table wale col ka name
+                        $("#txtCity").val(jsonAryResult[0].city);//use table wale col ka name
+                        $("#txtId").val(jsonAryResult[0].proof);//use table wale col ka name
+                        // alert(respJsonAry[0].pic);
+                        $("#hdn").val(jsonAryResult[0].ppic);
+                        $("#prev").prop("src", "uploads/" + jsonAryResult[0].ppic);
+
+                        $("#txtCategory").val(jsonAryResult[0].category);//use table wale col ka name
+                        $("#txtUrl").val(jsonAryResult[0].company);//use table wale col ka name
+                        $("#txtEstd").val(jsonAryResult[0].estd);//use table wale col ka name
+                        $("#txtPdetails").val(jsonAryResult[0].pdetails);//use table wale col ka name
+                        $("#txtRevenue").val(jsonAryResult[0].revenue);//use table wale col ka name
+                        $("#txtGross").val(jsonAryResult[0].gross);//use table wale col ka name
+                        $("#txtOther").val(jsonAryResult[0].otherinfo);//use table wale col ka name
+
+
+                    }
+
+                }).fail(function (kuchErr) {
+                    alert(kuchErr.toString());
+                });
+
+            });
+
+        });
+    </script>
+    <style>
+        body {
+            font-family: 'DynaPuff', cursive;
+        }
+
+        .navbar-brand {
+            color: rgb(19 20 20 / 93%);
+            font-weight: bold;
+        }
+
+        .btn1 {
+            box-shadow: 0px 0px 15px 1px rgb(191, 237, 250);
+            ;
+            color: white;
+            background-color: #5fa9c4;
+            border: none;
+            transition: all ease-in-out 0.5s;
+
+        }
+
+        .btn1:hover {
+            color: black;
+            background-color: white;
+            border: none;
+            transition: all ease-in-out .1s;
+        }
+
+        #scrollUpBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: rgb(73, 175, 215);
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .fa-eye {
+            position: relative;
+            top: -42px;
+            left: 434px;
+        }
+
+        .card1 {
+            cursor: pointer;
+            color: black;
+            background-color: #eee;
+            transition: all ease-in-out 0.5s;
+        }
+
+        .card1:hover {
+            cursor: pointer;
+            box-shadow: 0 0 0 20em inset #2c799b !important;
+            color: #eee !important;
+            transition: all ease-in-out 0.5s;
+        }
+
+
+
+        @media(max-width: 768px) {
+            .about_section .container .d-flex {
+                display: flex !important;
+                /* align-content: flex-start; */
+                flex-direction: column;
+            }
+
+            .choose_section .container .d-flex {
+                display: flex !important;
+                flex-direction: column;
+            }
+
+            .developer_section .container .d-flex1 {
+                display: flex !important;
+                /* align-content: flex-start; */
+                flex-direction: column;
+            }
+
+            .footer_section .container .row {
+
+                display: flex;
+                flex-wrap: wrap;
+
+            }
+
+            .model .modal-content {
+                font-weight: bolder;
+                position: relative;
+                font-family: 'Poppins', sans-serif;
+                bottom: 150px;
+            }
+        }
+
+        @media (max-width:575px) {
+            .carousel-indicators1 {
+                top: 640px;
+
+            }
+        }
+
+        #preloader {
+            background: white url(pics/Double\ Ring-1s-200px\ \(1\).gif) no-repeat center center;
+            background-size: 10%;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: 100;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--preloader start-->
+    <div id="preloader">
+    </div>
+    <!--prelaoder end-->
+    <button onclick="topFunction()" id="scrollUpBtn" title="Go to top"><i class="fa fa-angle-up"></i></button>
+    <div style="background-image: url(pics/banner-bg.png);
+    background-size: cover;">
+        <!--navbar start -->
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top" data-bs-theme="dark"
+            style="background: linear-gradient(45deg, #fcfcfc, #f2f3f3f1);">
+            <div class="container-fluid">
+
+                <a class="navbar-brand mx-2" href="#"><img src="pics/logo2.png"
+                        alt="shark_tank_logo"> </a>
+                <p class="fs-1 text-center align-items-center mb-0"
+                    style=" font-family: 'DynaPuff', cursive; color: rgb(71, 181, 233);">Pitcher Dashboard</p>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"
+                    style="box-shadow: 0px 0px 8px #0aa3e65e;background-color: #0aa3e65e;">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse mx-5 justify-content-end" id="navbarSupportedContent">
+                    <!-- <p class="fs-2"
+           style="margin-bottom: 0px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: rgb(71, 181, 233);">
+           Shark Dashboard</p> -->
+
+                    <input type="button" class="btn1 rounded-3 px-3 py-2" id="btnLogout" value="Logout">
+
+                </div>
+            </div>
+        </nav>
+        <!--navbar end -->
+
+
+        <div class="container my-5">
+            <div class="row">
+                <div class="col">
+                    <div class="card card1 text-center my-2"
+                        style="background: none; border: none;  box-shadow: 0px 0px 15px 10px rgb(110, 160, 180);">
+                        <div class="card-body">
+                            <img src="pics/dashpitcherprofile.png" class="card-img-top" alt="...">
+                            <button type="button" class="btn1 rounded-3 px-3 py-2" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                                Pitcher profile
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card card1 text-center my-2"
+                        style="background: none; border: none;  box-shadow: 0px 0px 15px 10px rgb(110, 160, 180); ">
+                        <div class="card-body">
+                            <img src="pics/dashpichereditprofile.png" class="card-img-top" alt="...">
+                            <button type="button" class="btn1 rounded-3 px-3 py-2" id="btnProfile"> Create / Update
+                                Profile</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card card1 text-center my-2"
+                        style="background: none; border: none;  box-shadow: 0px 0px 15px 10px rgb(110, 160, 180); ">
+                        <div class="card-body">
+                            <img src="pics/dashfindshark.png" class="card-img-top" alt="...">
+
+                            <button type="button" class="btn1 rounded-3 px-3 py-2" id="btnSharkFinder"> Find shark
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card card1 text-center my-2"
+                        style="background: none; border: none;  box-shadow: 0px 0px 15px 10px rgb(110, 160, 180);">
+                        <div class="card-body">
+                            <img src="pics/dashpitchersetting.png" class="card-img-top" alt="...">
+
+                            <button type="button" class="btn1 rounded-3 px-3 py-2" id="btnSetting"
+                                data-bs-toggle="modal" data-bs-target="#staticBackdrop1"> Setting </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content"
+                        style="outline: none;
+                    border: none;
+                    box-shadow: 0px 0px 29px 2px rgb(110, 160, 180); background: linear-gradient(90deg, white,rgb(110, 160, 180));">
+
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="text-center ">
+                            <img src="pics/pitcherSetting.png" class="img-fluid rounded py-3" alt=""
+                                style="background: none; ">
+
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control txtEmai122l" id="pEmail" name="pEmail"
+                                    placeholder="name@example.com">
+                                <label for="floatingInput">Email address</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control oldPassword" id="oldPassword"
+                                    name="oldPassword" placeholder="Password" disabled>
+                                <label for="floatingPassword">Old Password</label>
+                                <a href="">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
+                                <p class="mt-2" id="result12"></p>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="newPassword" name="newPassword"
+                                    placeholder="Password" disabled>
+                                <label for="floatingPassword">New Password</label>
+                                <a href="">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn1 rounded-3 px-3 py-2"
+                                data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn1 rounded-3 px-3 py-2 " id="pSaveChanges" disabled>Save
+                                Changes</button>
+                        </div>
+                        <p class="mt-2" id="result1" style="margin-left: 100px;"></p>
+                    </div>
+                </div>
+            </div>
+            <!--modal-->
+            <div class="modal fade p-4 py-md-5" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class=" modal-lg modal-dialog modal-dialog-centered modal-dialog-scrollable mx-lg-auto">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="staticBackdropLabel"
+                                style="font-family: 'DynaPuff', cursive; text-align: center; color:#5fa9c4; font-weight: bold;">
+                                Full Detail
+                            </h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="hdn" id="hdn">
+                                <div class="container ">
+                                    <div class="px-5 py-2 my-5 rounded-5"
+                                        style=" box-shadow: 0px 0px 15px 1px rgb(191, 237, 250); background-color:#5fa9c4;color:white; font-weight:bolder">
+
+                                        <form class="mt-3">
+                                            <div class="row my-3">
+
+                                                <div class=" col ">
+                                                    <label for="picTxtEamil" class="form-label">Email address</label>
+                                                    <input type="email" class="form-control" id="picTxtEamil"
+                                                        name="pEmail" placeholder="name@example.com">
+                                                </div>
+                                                <div class="col mt-4 justify-content-end ">
+                                                    <input class="btn1 rounded-3 px-3 py-2 mt-2" type="button"
+                                                        value="Search" id="pitcherbtnSearch">
+                                                </div>
+
+                                                <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+                                            </div>
+                                            <div class="row my-3">
+                                                <div class="col">
+                                                    <label for="txtFullname" class="form-label">full name</label>
+                                                    <input type="text" class="form-control" placeholder="Full Name"
+                                                        id="txtFullname" name="pName" readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <label for="txtContact" class="form-label">Contact</label>
+                                                    <input type="mobile" class="form-control"
+                                                        placeholder="Contact Number" id="txtContact" name="pCon"
+                                                        readonly>
+                                                </div>
+                                            </div>
+                                            <div class="row my-3">
+                                                <div class="col ">
+                                                    <label for="txtAddress" class="form-label">Address</label>
+                                                    <input type="text" class="form-control" id="txtAddress"
+                                                        placeholder="Enter Your Address" name="txtAddress" readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <label for="txtCity" class="form-label">City</label>
+                                                    <input type="text" class="form-control" id="txtCity" name="pCity"
+                                                        readonly>
+                                                </div>
+
+                                            </div>
+                                            <div class="row my-3">
+
+                                                <div class=" col">
+                                                    <label class="input-group-text my-1" for="inputGroupSelect01">Id
+                                                        Proof</label>
+                                                    <input type="text" class="form-control" id="txtId" name="pId"
+                                                        readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <label class="input-group-text my-1" for="ppic">Upload Pic </label>
+                                                    <input type="file" class="form-control" id="ppic" name="txtPic"
+                                                        onchange="doPrev(ppic,prev);">
+                                                </div>
+                                                <div class="col">
+                                                    <img id="prev" src="" alt="" width="100%" height="100%">
+                                                </div>
+                                            </div>
+                                            <div class="row my-3">
+                                                <div class=" col">
+                                                    <label class="input-group-text my-1"
+                                                        for="txtCategory">Category</label>
+                                                    <input type="text" class="form-control" id="txtCategory" name="pCat"
+                                                        readonly>
+
+                                                </div>
+                                                <div class="col-6 mb-3">
+                                                    <label for="txtUrl my-1" class="form-label">Your vanity URL</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"
+                                                            id="basic-addon3">https://example.com/users/</span>
+                                                        <input type="text" class="form-control" id="txtUrl" name="pUrl"
+                                                            aria-describedby="basic-addon3" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <label for="txtEstd" class="form-label">estd.</label>
+                                                    <input type="text" class="form-control" id="txtEstd" name="pEstd"
+                                                        readonly>
+                                                </div>
+                                            </div>
+                                            <div class="row my-3">
+
+                                                <div class="col">
+                                                    <label for="txtPdetails">Product Detail</label>
+                                                    <textarea class="form-control" placeholder="Leave a comment here"
+                                                        id="txtPdetails" name="pPDetail" readonly></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row my-3">
+                                                <div class="col">
+                                                    <label for="txtRevenue" class="form-label">revenue</label>
+                                                    <input type="text" class="form-control" id="txtRevenue"
+                                                        name="pRevenue" readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <label for="txtGross" class="form-label">gross margin</label>
+                                                    <input type="text" class="form-control" id="txtGross" name="pGross"
+                                                        readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <label for="txtOther" class="form-label">other detail</label>
+                                                    <textarea class="form-control" placeholder="Leave a comment here"
+                                                        id="txtOther" name="pODetail" readonly></textarea>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn1 rounded-3 px-3 py-2 "
+                                data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+   <!-- footer section start -->
+   <div class="footer_section" style="background-color: #1f1f1fc7; padding: 90px 0px;">
+    <div class="container">
+      <div class="row  mb-5 text-center align-items-center">
+        <div class="col ">
+          <div class="card my-1" style="background: none; border: none;">
+            <div class="card-body border-bottom">
+              <h5 class="card-title"><span class=" fw-bold" style="color: #fbfbfb; ">Contact </span> <img
+                  src="pics/logo2.png" class="card-img-fluid"> <span class=" fw-bold"
+                  style="color: #fbfbfb;">Us</span></h5>
+
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card my-1" style="background: none; border: none;">
+            <div class="card-body" style="color: white;">
+              <img src="pics/map-icon.png"><span class="px-1 fs-7">Locations</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card my-1" style="background: none; border: none;">
+            <div class="card-body" style="color: white;">
+              <img src="pics/call-icon.png"><span class="px-1 fs-7">+91 9779311902</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="col ">
+          <div class="card my-1" style="background: none; border: none;">
+            <div class="card-body" style="color: white;">
+              <img src="pics/mail-icon.png"><span class="px-1 fs-7">nitingoyal658930@gmail.com</span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="contact_section">
+        <div class="row align-items-center">
+          <div class="col">
+            <form action="db-contact-us" method="post">
+              <div class="mb-3">
+                <label for="contactName" class="form-label" style="color: white;">Name</label>
+                <input type="text" class="form-control" id="contactName" placeholder="Enter Name" name="contactName"
+                  required>
+              </div>
+              <div class="mb-3">
+                <label for="contactEmail" class="form-label" style="color: white;">Email address</label>
+                <input type="email" class="form-control" id="contactEmail" placeholder="name@example.com"
+                  name="contactEmail" required>
+              </div>
+              <div class="mb-3">
+                <label for="conatctMobile" class="form-label" style="color: white;">Phone Number</label>
+                <input type="number" class="form-control" id="contactMobile" placeholder="Mobile Number"
+                  name="contactMobile" required>
+              </div>
+              <div class="mb-3">
+                <label for="conatctTextarea" class="form-label" style="color: white;">Message</label>
+                <textarea class="form-control" id="contactTextarea" rows="3" placeholder="How can we help you??"
+                  name="contactMessage" required></textarea>
+              </div>
+              <input type="button" class="btn1 rounded-3 px-3 py-2" id="btnContact" value="Send"></input>
+              <p id="contactResult" style="text-align: center; color: white;"></p>
+            </form>
+          </div>
+          <div class="col my-5">
+            <div class="map_main mt-3">
+              <div class="map-responsive">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.40865456552!2d76.68230521496763!3d30.706910081646168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fee556ae0e583%3A0x6e8374d6453df87a!2sDestm%20Technologies!5e0!3m2!1sen!2sin!4v1681239682049!5m2!1sen!2sin"
+                  width="600" height="280" frameborder="0" style="border:0; width: 100%;" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="social_icon">
+              <div class="wrapper d-flex justify-content-center my-4">
+                <div class="button mx-2">
+                  <div class="icon">
+                    <a href="https://www.facebook.com/profile.php?id=100008388784071"><i
+                        class="fab fa-facebook-f"></i></a>
+                  </div>
+                  <span>Facebook</span>
+                </div>
+                <div class="button mx-2">
+                  <div class="icon">
+                    <a href="https://www.linkedin.com/in/nitin-kumar-a77b181b1"><i class="fab fa-linkedin"></i></a>
+                  </div>
+                  <span>Linkedin</span>
+                </div>
+                <div class="button mx-2">
+                  <div class="icon">
+                    <a href="https://instagram.com/_goyal_nitin._02?igshid=ZDdkNTZiNTM="><i
+                        class="fab fa-instagram"></i></a>
+                  </div>
+                  <span>Instagram</span>
+                </div>
+                <div class="button mx-2">
+                  <div class="icon">
+                    <a href="https://t.snapchat.com/Nb9Tqell"><i class="fab fa-snapchat"></i></a>
+                  </div>
+                  <span>Snapchat</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer section end -->
+    <!-- copyright section start -->
+    <div class="copyright_section">
+        <div class="container text-center">
+            <p class="mb-0 py-2">&#xA9; Copyright 2020 All Right Reserved.</p>
+        </div>
+    </div>
+    <!-- copyright section end -->
+    <script src="jquery/scroll.js"></script>
+    <script src="jquery/preloader.js"></script>
+</body>
+
+</html>

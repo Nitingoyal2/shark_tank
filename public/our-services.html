@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" type="x-icon" href="pics/sharklogo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shark Tank Project</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="jquery/index.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/index.css">
+
+  <link rel="stylesheet" href="css/social_icon.css">
+  <style>
+    body {
+      font-family: 'DynaPuff', cursive;
+
+    }
+
+    .btn1 {
+      box-shadow: 0px 0px 15px 1px rgb(191, 237, 250);
+      ;
+      color: white;
+      background-color: #5fa9c4;
+      border: none;
+      transition: all ease-in-out 0.5s;
+
+    }
+
+    .btn1:hover {
+      box-shadow: 0px 0px 15px 1px rgb(191, 237, 250);
+      color: black;
+      background-color: white;
+      border: none;
+      transition: all ease-in-out .1s;
+    }
+
+
+
+    @media(max-width: 768px) {
+
+      .services_section .container .d-flex1 {
+        display: flex !important;
+        /* align-content: flex-start; */
+        flex-direction: column;
+      }
+
+      .about_section .container .d-flex {
+        display: flex !important;
+        /* align-content: flex-start; */
+        flex-direction: column;
+      }
+
+      .choose_section .container .d-flex {
+        display: flex !important;
+        flex-direction: column;
+      }
+
+      .developer_section .container .d-flex1 {
+        display: flex !important;
+        /* align-content: flex-start; */
+        flex-direction: column;
+      }
+
+      .footer_section .container .row {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: calc(-1 * var(--bs-gutter-y));
+        margin-right: calc(-.5 * var(--bs-gutter-x));
+        margin-left: calc(-.5 * var(--bs-gutter-x));
+        flex-direction: column;
+      }
+
+
+    }
+
+    @media (max-width:575px) {
+      .carousel-indicators1 {
+        top: 640px;
+
+      }
+    }
+
+
+    #preloader {
+      background: white url(pics/Double\ Ring-1s-200px\ \(1\).gif) no-repeat center center;
+      background-size: 10%;
+      height: 100vh;
+      width: 100%;
+      position: fixed;
+      z-index: 100;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!--preloader start-->
+  <div id="preloader">
+  </div>
+  <!--prelaoder end-->
+  <button onclick="topFunction()" id="scrollUpBtn" title="Go to top"><i class="fa fa-angle-up"></i></button>
+  <!--navbar start -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" data-bs-theme="dark"
+    style="background: linear-gradient(45deg, #fcfcfc, #f2f3f3f1);">
+    <div class="container-fluid">
+
+      <a class="navbar-brand mx-2" href="index.html"><img src="pics/mainlogo.png" alt="shark_tank_logo"> </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="    box-shadow: 0px 0px 8px #0aa3e65e;
+        background-color: #0aa3e65e;">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav navbar-nav ms-5 me-auto mb-2 mb-lg-0" style="font-family: 'DynaPuff', cursive;">
+          <li class="nav-item mx-1 border-bottom border-info border-2 ">
+            <a class="nav-link active fw-bold" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item mx-1">
+            <a class="nav-link fw-bold" href="our-services.html">Our Services</a>
+          </li>
+          <li class="nav-item mx-1">
+            <a class="nav-link fw-bold" aria-current="page" href="about.html">About</a>
+          </li>
+          <li class="nav-item mx-1">
+            <a class="nav-link fw-bold" href="contact.html">Contact Us</a>
+          </li>
+          <li class="nav-item mx-1">
+            <a class="nav-link fw-bold" href="admin_manager.html">Admin Login</a>
+          </li>
+        </ul>
+
+        <!-- <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-info" type="submit">Search</button>
+      </form> -->
+        <div class="d-flex mx-4 my-1">
+          <input type="button" class="btn1 me-3 rounded-3 px-3 py-2" id="btnShowLog" value="Sign In"
+            data-bs-toggle="modal" data-bs-target="#loginModal">
+          <input type="button" class="btn1 rounded-3 px-3 py-2" id="btnShowSign" value="Register" data-bs-toggle="modal"
+            data-bs-target="#signupModal">
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!--navbar end -->
+
+  <!--services section start-->
+  <div class="services_section" style="background-color: #f0faff; padding: 60px 0px;">
+    <div class="container">
+      <h1 class="choose_taital text-center" style="font-family: 'DynaPuff', cursive;"><span
+          style="color: #addaed; font-weight: bolder;">Our</span><img src="pics/logo2.png" class="card-img-fluid"><span style="color: #1f1f1f; font-weight: bolder;">Services</span></h1>
+      <div class="container container1 my-5">
+        <div class="images_main_1">
+          <div class="d-flex align-items-center d-flex1">
+            <div class="col justify-content-center text-center">
+              <div class="image_4"><img src="pics/findshark2.png" class="card-img-fluid rounded-circle" alt="developer_pic"
+                  style="box-shadow: 5px 6px 14px 0px rgb(191, 237, 250);"></div>
+              <h6 class="follow_text pt-3 fs-4" style="font-family: 'DynaPuff', cursive; color: rgb(71, 181, 233);">
+                Follow Us
+              </h6>
+              <div class="follow_social_icon ">
+                <div class="wrapper d-flex justify-content-center my-4">
+                  <div class="button mx-2">
+                    <div class="icon">
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <span>Facebook</span>
+                  </div>
+                  <div class="button mx-2">
+                    <div class="icon">
+                      <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <span>Linkedin</span>
+                  </div>
+                  <div class="button mx-2">
+                    <div class="icon">
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <span>Instagram</span>
+                  </div>
+                  <div class="button mx-2">
+                    <div class="icon">
+                      <a href="#"><i class="fab fa-snapchat"></i></a>
+                    </div>
+                    <span>Snapchat</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col my-4 text-center">
+              <h2 class="consectetur_text fw-bold " style="color: rgb(71, 181, 233);">Shark</h2>
+              <p class="dummy_text" style="text-align: left;;">The "sharks" on Shark Tank are a panel of investors who listen to pitches from entrepreneurs and decide whether to invest their own money in the business. The sharks are some of the most successful and well-known businesspeople and investors. </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="images_main_2">
+          <div class="d-flex align-items-center d-flex1">
+
+            <div class="col my-4 text-center">
+              <h2 class="consectetur_text fw-bold " style="color: rgb(71, 181, 233);">Pitcher</h2>
+              <p class="dummy_text " style="text-align: left;">A Pitcher is a person who gets involved in buying and
+                selling of a financial asset in any financial market. He or she can buy or sell either for
+                himself/herself or on behalf of another individual or institution..
+                Pitcher are individuals who engage in the short-term buying and selling of a financial asset for
+                themselves or an institution such as a bank, brokerage firm, or hedge fund.<br>
+                Pitchers use a variety of strategies to generate profits, including scalping, day trading, and swing
+                trading.
+                Pitchers can be contrasted with investors, who seek long-term capital gains rather than short-term
+                profits.</p>
+            </div>
+            <div class="col justify-content-center text-center">
+              <div class="image_4"><img src="pics/findpitcher2.png" class="card-img-fluid rounded-circle"
+                  alt="developer_pic"
+                  style="box-shadow: 5px 6px 14px 0px rgb(191, 237, 250);"></div>
+              <h6 class="follow_text pt-3 fs-4" style="font-family: 'DynaPuff', cursive; color: rgb(71, 181, 233);">
+                Follow Us
+              </h6>
+              <div class="follow_social_icon ">
+                <div class="wrapper d-flex justify-content-center my-4">
+                  <div class="button mx-2">
+                    <div class="icon">
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <span>Facebook</span>
+                  </div>
+                  <div class="button mx-2">
+                    <div class="icon">
+                      <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <span>Linkedin</span>
+                  </div>
+                  <div class="button mx-2">
+                    <div class="icon">
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <span>Instagram</span>
+                  </div>
+                  <div class="button mx-2">
+                    <div class="icon">
+                      <a href="#"><i class="fab fa-snapchat"></i></a>
+                    </div>
+                    <span>Snapchat</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="images_main_3">
+          <div class="d-flex align-items-center d-flex1">
+            <div class="col justify-content-center text-center">
+              <div class="image_4"><img src="pics/platform2.png" class="card-img-fluid rounded-circle" alt="developer_pic"
+                  style="box-shadow: 5px 6px 14px 0px rgb(191, 237, 250);"></div>
+              <h6 class="follow_text pt-3 fs-4" style="font-family: 'DynaPuff', cursive; color: rgb(71, 181, 233);">
+                Follow Us
+              </h6>
+              <div class="follow_social_icon ">
+                <div class="wrapper d-flex justify-content-center my-4">
+                  <div class="button mx-2">
+                    <div class="icon">
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <span>Facebook</span>
+                  </div>
+                  <div class="button mx-2">
+                    <div class="icon">
+                      <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <span>Linkedin</span>
+                  </div>
+                  <div class="button mx-2">
+                    <div class="icon">
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <span>Instagram</span>
+                  </div>
+                  <div class="button mx-2">
+                    <div class="icon">
+                      <a href="#"><i class="fab fa-snapchat"></i></a>
+                    </div>
+                    <span>Snapchat</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col my-4 text-center">
+              <h2 class="consectetur_text fw-bold " style="color: rgb(71, 181, 233);">Platform</h2>
+              <p class="dummy_text" style="text-align: left;;">This Platform provides an opportunities for shark to
+                invest in new and exciting startups and for pitcher to grow their business.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!--service section end-->
+  <!-- footer section start -->
+  <div class="footer_section" style="background-color: #1f1f1fc7; padding: 90px 0px;">
+    <div class="container">
+      <div class="row  mb-5 text-center align-items-center">
+        <div class="col ">
+          <div class="card my-1" style="background: none; border: none;">
+            <div class="card-body border-bottom">
+              <h5 class="card-title"><span class=" fw-bold" style="color: #fbfbfb; ">Contact </span> <img
+                  src="pics/logo2.png" class="card-img-fluid"> <span class=" fw-bold"
+                  style="color: #fbfbfb;">Us</span></h5>
+
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card my-1" style="background: none; border: none;">
+            <div class="card-body" style="color: white;">
+              <img src="pics/map-icon.png"><span class="px-1 fs-7">Locations</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card my-1" style="background: none; border: none;">
+            <div class="card-body" style="color: white;">
+              <img src="pics/call-icon.png"><span class="px-1 fs-7">+91 9779311902</span>
+
+            </div>
+          </div>
+        </div>
+        <div class="col ">
+          <div class="card my-1" style="background: none; border: none;">
+            <div class="card-body" style="color: white;">
+              <img src="pics/mail-icon.png"><span class="px-1 fs-7">nitingoyal658930@gmail.com</span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="contact_section">
+        <div class="row align-items-center">
+          <div class="col">
+            <form action="db-contact-us" method="post">
+              <div class="mb-3">
+                <label for="contactName" class="form-label" style="color: white;">Name</label>
+                <input type="text" class="form-control" id="contactName" placeholder="Enter Name" name="contactName"
+                  required>
+              </div>
+              <div class="mb-3">
+                <label for="contactEmail" class="form-label" style="color: white;">Email address</label>
+                <input type="email" class="form-control" id="contactEmail" placeholder="name@example.com"
+                  name="contactEmail" required>
+              </div>
+              <div class="mb-3">
+                <label for="conatctMobile" class="form-label" style="color: white;">Phone Number</label>
+                <input type="number" class="form-control" id="contactMobile" placeholder="Mobile Number"
+                  name="contactMobile" required>
+              </div>
+              <div class="mb-3">
+                <label for="conatctTextarea" class="form-label" style="color: white;">Message</label>
+                <textarea class="form-control" id="contactTextarea" rows="3" placeholder="How can we help you??"
+                  name="contactMessage" required></textarea>
+              </div>
+              <input type="button" class="btn1 rounded-3 px-3 py-2" id="btnContact" value="send"></input>
+              <p id="contactResult" style="text-align: center; color: white;"></p>
+            </form>
+          </div>
+          <div class="col my-5">
+            <div class="map_main mt-3">
+              <div class="map-responsive">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.40865456552!2d76.68230521496763!3d30.706910081646168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fee556ae0e583%3A0x6e8374d6453df87a!2sDestm%20Technologies!5e0!3m2!1sen!2sin!4v1681239682049!5m2!1sen!2sin"
+                  width="600" height="280" frameborder="0" style="border:0; width: 100%;" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="social_icon">
+              <div class="wrapper d-flex justify-content-center my-4">
+                <div class="button mx-2">
+                  <div class="icon">
+                    <a href="https://www.facebook.com/profile.php?id=100008388784071"><i
+                        class="fab fa-facebook-f"></i></a>
+                  </div>
+                  <span>Facebook</span>
+                </div>
+                <div class="button mx-2">
+                  <div class="icon">
+                    <a href="https://www.linkedin.com/in/nitin-kumar-a77b181b1"><i class="fab fa-linkedin"></i></a>
+                  </div>
+                  <span>Linkedin</span>
+                </div>
+                <div class="button mx-2">
+                  <div class="icon">
+                    <a href="https://instagram.com/_goyal_nitin._02?igshid=ZDdkNTZiNTM="><i
+                        class="fab fa-instagram"></i></a>
+                  </div>
+                  <span>Instagram</span>
+                </div>
+                <div class="button mx-2">
+                  <div class="icon">
+                    <a href="https://t.snapchat.com/Nb9Tqell"><i class="fab fa-snapchat"></i></a>
+                  </div>
+                  <span>Snapchat</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- footer section end -->
+  <!-- copyright section start -->
+  <div class="copyright_section">
+    <div class="container text-center">
+      <p class="mb-0 py-2">&#xA9; Copyright 2020 All Right Reserved.</p>
+    </div>
+  </div>
+  <!-- copyright section end -->
+
+  <!--login model -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content"
+        style=" background : #5fa9c4; border: none; box-shadow: 0px 0px 20px 0px rgb(244, 245, 246); color: #fcfcfc;">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel"
+            style="font-family: 'DynaPuff', cursive; text-align: center; font-weight: bold;">Sign in to Shark
+            Tank</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="txtEmailLog form-control" id="inputEmail" aria-describedby="emailHelp"
+                style="background: none;">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="pswd mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="txtPswdLog pswd form-control" id="inputPassword"
+                style="background: none; color: red;">
+              <a href="">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+              </a>
+            </div>
+            <input type="button" class="btn1 rounded-3 px-3 py-2" value="Login" id="btnLogin">
+            <input type="button" type="button" class="close btn1 rounded-3 px-3 py-2" data-bs-dismiss="modal"
+              aria-label="Close" value="close">
+            <p id="loginResult" style="text-align: center;"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- signup model -->
+
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content"
+        style=" background : #5fa9c4; border: none; box-shadow: 0px 0px 20px 0px rgb(244, 245, 246); color: #fcfcfc;">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel"
+            style="font-family: 'DynaPuff', cursive; text-align: center; font-weight: bold;">Sign in to Shark
+            Tank</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="signup-process" method="post">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" name="txtEmail" class="txtEmailSign form-control" id="txtEmail"
+                aria-describedby="emailHelp" style="background: none;">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              <p id="inputRes" style="font-size:14px; margin-left: 10px;"></p>
+            </div>
+            <div class="pswd mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" name="txtPswd" class="txtPswdSign pswd form-control" id="txtPswd"
+                style="background: none;">
+              <a href="">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="mb-4">
+              <label for="exampleInputmobile1" class="form-label">User type</label>
+              <select class="txtSel form-select" name="txtSel" aria-label="Default select example"
+                style="background: none;">
+                <option selected>select</option>
+                <option value="Shark" id="txtShark">Shark</option>
+                <option value="Pitcher" id="txtPitch">Pitcher</option>
+              </select>
+            </div>
+
+            <input type="button" class="btn1 rounded-3 px-3 py-2" value="Sign Up" id="btnSignup">
+            <input type="button" class="close1 btn1 rounded-3 px-3 py-2" data-bs-dismiss="modal" aria-label="Close"
+              value="close">
+            <div class="my-3 text-center ">
+              <div class="wrapper d-flex justify-content-center my-4">
+                <div class="button mx-2">
+                  <div class="icon">
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                  </div>
+                  <span>Facebook</span>
+                </div>
+                <div class="button mx-2">
+                  <div class="icon">
+                    <a href=""><i class="fab fa-twitter"></i></a>
+                  </div>
+                  <span>Twitter</span>
+                </div>
+                <div class="button mx-2">
+                  <div class="icon">
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                  </div>
+                  <span>Instagram</span>
+                </div>
+                <div class="button mx-2">
+                  <div class="icon">
+                    <a href=""><i class="fab fa-snapchat"></i></a>
+                  </div>
+                  <span>Snapchat</span>
+                </div>
+              </div>
+            </div>
+            <p class="mt-2 text-center" id="submitRes" style="margin-left: 10px;"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="jquery/scroll.js"></script>
+  <script src="jquery/preloader.js"></script>
+  <script src="jquery/contact.js"></script>
+</body>
+
+</html>

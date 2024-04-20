@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="x-icon" href="pics/sharklogo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shark Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="jquery/shark.js"></script>
+
+    <link rel="stylesheet" href="css/social_icon.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'DynaPuff', cursive;
+            text-transform: capitalize;
+        }
+
+        .btn1 {
+            box-shadow: 0px 0px 15px 1px rgb(191, 237, 250);
+            ;
+            color: white;
+            background-color: #5fa9c4;
+            border: none;
+            transition: all ease-in-out 0.5s;
+
+        }
+
+        .btn1:hover {
+            box-shadow: 0px 0px 15px 1px rgb(191, 237, 250);
+            color: black;
+            background-color: white;
+            border: none;
+            transition: all ease-in-out .1s;
+        }
+
+        #scrollUpBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: rgb(73, 175, 215);
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        #preloader {
+            background: white url(pics/Double\ Ring-1s-200px\ \(1\).gif) no-repeat center center;
+            background-size: 10%;
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body onload="doOnLoad();">
+    <!--preloader start-->
+    <div id="preloader">
+    </div>
+    <!--prelaoder end-->
+    <button onclick="topFunction()" id="scrollUpBtn" title="Go to top"><i class="fa fa-angle-up"></i></button>
+    <div style="background-image: url(pics/shark\ \(5\).png);
+    background-size: cover;">
+        <!--navbar start -->
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top" data-bs-theme="dark"
+            style="background: linear-gradient(45deg, #fcfcfc, #f2f3f3f1);">
+            <div class="container-fluid">
+
+                <a class="navbar-brand mx-2" href="#"><img src="pics/mainlogo.png"  alt="shark_tank_logo"> </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"
+                    style="box-shadow: 0px 0px 8px #0aa3e65e;background-color: #0aa3e65e;">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <p class="fs-2 mb-0 mx-3 text-center justify-content-center"
+                        style="font-family: 'DynaPuff', cursive; color: rgb(71, 181, 233);">
+                        Shark Profile</p>
+
+                    <!-- <input type="button" class="btn2 btn btn-info" id="btnLogout" value="Logout"> -->
+
+                </div>
+            </div>
+        </nav>
+        <!--navbar end -->
+        <form action="" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="hdn" id="hdn">
+            <div class="container">
+                <div class="px-5 py-2 my-5 rounded-5"
+                    style=" box-shadow: 0px 0px 15px 1px rgb(191, 237, 250); background-color:#5fa9c4;color:white; font-weight:bolder">
+
+                    <form class="mt-3">
+                        <div class="row my-3">
+
+                            <div class=" col ">
+                                <label for="ShaTxtEamil" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="ShaTxtEamil" name="sEmail"
+                                    placeholder="name@example.com" readonly>
+                            </div>
+                            <div class="col mt-4 justify-content-end ">
+                                <input class="btn1 rounded-3 px-3 py-2 mt-2" type="button" value="Get Details"
+                                    id="sbtnSearch">
+                            </div>
+
+                            <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+                        </div>
+                        <div class="row my-3">
+                            <div class="col">
+                                <label for="txtFullname" class="form-label">first name</label>
+                                <input type="text" class="form-control" placeholder="First Name" id="txtFirstname"
+                                    name="sFName">
+                            </div>
+                            <div class="col">
+                                <label for="txtFullname" class="form-label">last name</label>
+                                <input type="text" class="form-control" placeholder="Last Name" id="txtLastname"
+                                    name="sLName">
+                            </div>
+                            <div class="col">
+                                <label for="sDOB" class="form-label">Date of birth</label>
+                                <input type="date" class="form-control" placeholder="Date Of Birth" id="sDOB"
+                                    name="sDob">
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col ">
+                                <label for="txtAddress" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="txtAddress" placeholder="1234 Main St"
+                                    name="sAdd">
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col">
+                                <label for="inputCity">City</label>
+                                <input type="text" class="form-control" id="inputCity" name="sCity">
+                            </div>
+                            <div class=" col">
+                                <label class="input-group-text my-1" for="txtState">State</label>
+                                <select class="form-select" id="txtState" name="sState">
+                                    <option selected>---Choose---</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                    <option value="Daman and Diu">Daman and Diu</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="Puducherry">Puducherry</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="inputZip">Zip</label>
+                                <input type="text" class="form-control" id="inputZip" name="sZip">
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col">
+                                <label for="txtContact" class="form-label">Contact</label>
+                                <input type="mobile" class="form-control" placeholder="Contact Number" id="txtContact"
+                                    name="sCon">
+                            </div>
+                            <div class=" col-5">
+                                <label class="input-group-text my-1" for="txtDomain">Domains/Fields</label>
+                                <select class="form-select" id="txtDomain" name="txtDomain" onchange="doCart(this);">
+                                    <option selected>---Choose---</option>
+                                    <option value="Electronics" id="txtElec">Electronics</option>
+                                    <option value="Men's Fashion" id="txtMen">Men's Fashion</option>
+                                    <option value="Women's Fashion" id="txtWomen">Women's Fashion</option>
+                                    <option value="Beauty,Health,Grocery" id="txtBeauty">Beauty,Health,Grocery</option>
+                                    <option value="Sports,Fitness,Bags,Luggage" id="txtSports">
+                                        Sports,Fitness,Bags,Luggage</option>
+                                    <option value="Books" id="txtBooks">Books</option>
+                                    <option value="Car,Motorbike,Industrial" id="txtCar">Car,Motorbike,Industrial
+                                    </option>
+                                    <option value="Furniture" id="txtFur">Furniture</option>
+                                    <option value="" id="txtFur">Furniture</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">selected domain</label>
+                                <input type="text" class="form-control" id="txtSelect" name="txtSelect">
+                            </div>
+
+                        </div>
+                        <div class="row my-3">
+                            <div class="col">
+                                <label for="txtCompany" class="form-label">Company</label>
+                                <input type="text" class="form-control" placeholder="Enter company name" id="txtCompany"
+                                    name="sCompany">
+                            </div>
+                            <div class="col">
+                                <label for="txtInvestment" class="form-label">No. of Investment</label>
+                                <input type="text" class="form-control" placeholder="Enter Number of Investment"
+                                    id="txtInvestment" name="sInvestment">
+                            </div>
+                            <div class="col">
+                                <label for="txtInCompany " class="form-label">In Company</label>
+                                <input type="text" class="form-control" placeholder="Investment company name"
+                                    id="txtInCompany" name="sInCompany">
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col">
+                                <label class="input-group-text my-1" for="spic">Profile Picture </label>
+                                <input type="file" class="form-control" id="spic" name="txtSPic"
+                                    onchange="doPrev(spic,prev);">
+                            </div>
+                            <div class="form-floating col">
+                                <img id="prev" src="" alt="" width="100%" height="100%">
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col">
+                                <label for="txtOther" class="form-label">other details</label>
+                                <textarea class="form-control" placeholder="Leave a comment here" id="txtOther"
+                                    name="sODetail"></textarea>
+                            </div>
+                        </div>
+                        <div class="row my-5 justify-content-center">
+                            <div class="col-2">
+                                <input type="submit" class="btn1 rounded-3 px-3 py-2 mt-2" value="Send to Server"
+                                    id="btnSharkSend" formaction="/send-process-shark">
+                            </div>
+                            <div class="col-2">
+                                <input type="submit" class="btn1 rounded-3 px-3 py-2 mt-2" value="Edit Details"
+                                    id="btnSharkEd" formaction="/edit-process-shark">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="jquery/scroll.js"></script>
+    <script src="jquery/preloader.js"></script>
+</body>
+
+</html>

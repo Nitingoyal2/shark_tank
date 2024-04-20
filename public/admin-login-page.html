@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login page</title>
+	<link rel="stylesheet" href="css/admin-login.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<script>
+	// $(document).ready(function () {
+	// 	$("#btnLogin").click(function () {
+	// 		location.href = "admin_manager.html";
+	// 	})
+	// })
+</script>
+
+<body>
+	<div class="form_container">
+
+		<form action="#0" onsubmit="login()">
+			<h3>Login Here</h3>
+
+			<label class="emailBox">
+				<input type="email" id="email" placeholder="Email">
+				<span class="emailText"></span>
+			</label>
+
+			<label class="passBox">
+				<input type="password" id="password" placeholder="password" disabled>
+
+				<span class="passText"></span>
+			</label>
+			<i class="fa fa-eye" id="togglePassword"></i>
+			<!-- <img src="/eyeicon.jpeg" alt=""> -->
+
+			<input type="submit" value="Login" id="btnLogin" disabled>
+		</form>
+	</div>
+	<script src="jquery/admin-login.js"></script>
+
+</body>
+
+</html>
